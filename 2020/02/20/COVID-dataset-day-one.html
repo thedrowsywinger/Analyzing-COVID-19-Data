@@ -256,7 +256,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 44220/44220 [00:00&lt;00:00, 223288.21it/s]
+<pre>100%|██████████| 44220/44220 [00:00&lt;00:00, 103482.46it/s]
 </pre>
 </div>
 </div>
@@ -306,7 +306,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
-
+<span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">words_list</span><span class="p">):</span> 
     <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span> 
         <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> 
@@ -322,7 +322,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 545436/545436 [00:00&lt;00:00, 1736443.52it/s]
+<pre>100%|██████████| 545436/545436 [00:00&lt;00:00, 849738.42it/s]
 </pre>
 </div>
 </div>
@@ -356,7 +356,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 1778005/1778005 [08:27&lt;00:00, 3503.91it/s]  
+<pre>100%|██████████| 401569/401569 [00:00&lt;00:00, 1096184.26it/s]
 </pre>
 </div>
 </div>
@@ -379,6 +379,51 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;virus&#39;, 6691),
+ (&#39;respiratory&#39;, 4753),
+ (&#39;coronavirus&#39;, 4224),
+ (&#39;infection&#39;, 3088),
+ (&#39;viral&#39;, 2694),
+ (&#39;human&#39;, 2510),
+ (&#39;protein&#39;, 2284),
+ (&#39;influenza&#39;, 2226),
+ (&#39;disease&#39;, 2199),
+ (&#39;acute&#39;, 2030),
+ (&#39;syndrome&#39;, 2027),
+ (&#39;infectious&#39;, 1912),
+ (&#39;novel&#39;, 1761),
+ (&#39;health&#39;, 1662),
+ (&#39;cells&#39;, 1568),
+ (&#39;chapter&#39;, 1522),
+ (&#39;infections&#39;, 1519),
+ (&#39;detection&#39;, 1517),
+ (&#39;viruses&#39;, 1513),
+ (&#39;analysis&#39;, 1433),
+ (&#39;rna&#39;, 1382),
+ (&#39;severe&#39;, 1313),
+ (&#39;cell&#39;, 1281),
+ (&#39;study&#39;, 1206),
+ (&#39;porcine&#39;, 1183),
+ (&#39;clinical&#39;, 1133),
+ (&#39;patients&#39;, 1100),
+ (&#39;sars&#39;, 1021),
+ (&#39;diseases&#39;, 1020),
+ (&#39;vaccine&#39;, 1010)]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
