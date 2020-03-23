@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Title | COVID-19 Open Research Dataset Challenge (CORD-19)</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="summary" />
+<meta property="og:description" content="summary" />
+<link rel="canonical" href="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html" />
+<meta property="og:url" content="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html" />
+<meta property="og:site_name" content="COVID-19 Open Research Dataset Challenge (CORD-19)" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-02-20T00:00:00-06:00","dateModified":"2020-02-20T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html"},"description":"summary","@type":"BlogPosting","url":"https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html","headline":"Title","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Analyzing-COVID-19-Data/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/feed.xml" title="COVID-19 Open Research Dataset Challenge (CORD-19)" /><link rel="shortcut icon" type="image/x-icon" href="/Analyzing-COVID-19-Data/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Title | COVID-19 Open Research Dataset Challenge (CORD-19)</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="summary" />
+<meta property="og:description" content="summary" />
+<link rel="canonical" href="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html" />
+<meta property="og:url" content="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html" />
+<meta property="og:site_name" content="COVID-19 Open Research Dataset Challenge (CORD-19)" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-02-20T00:00:00-06:00","dateModified":"2020-02-20T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html"},"description":"summary","@type":"BlogPosting","url":"https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html","headline":"Title","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://thedrowsywinger.github.io/Analyzing-COVID-19-Data/feed.xml" title="COVID-19 Open Research Dataset Challenge (CORD-19)" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Analyzing-COVID-19-Data/">COVID-19 Open Research Dataset Challenge (CORD-19)</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Analyzing-COVID-19-Data/about/">About Me</a><a class="page-link" href="/Analyzing-COVID-19-Data/search/">Search</a><a class="page-link" href="/Analyzing-COVID-19-Data/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="page-description">summary</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-02-20T00:00:00-06:00" itemprop="datePublished">
+        Feb 20, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/thedrowsywinger/Analyzing-COVID-19-Data/tree/master/_notebooks/2020-02-20-JHU-dataset.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/Analyzing-COVID-19-Data/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/thedrowsywinger/Analyzing-COVID-19-Data/master?filepath=_notebooks%2F2020-02-20-JHU-dataset.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/Analyzing-COVID-19-Data/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/thedrowsywinger/Analyzing-COVID-19-Data/blob/master/_notebooks/2020-02-20-JHU-dataset.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/Analyzing-COVID-19-Data/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-02-20-JHU-dataset.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">thedrowsywinger</span><span class="o">/</span><span class="mi">2</span><span class="n">A24A59224A56195</span><span class="o">/</span><span class="n">Poralekha</span><span class="o">/</span><span class="n">github</span><span class="o">/</span><span class="n">COVID</span><span class="o">-</span><span class="mi">19</span><span class="o">/</span><span class="n">csse_covid_19_data</span><span class="o">/</span><span class="n">csse_covid_19_daily_reports</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/media/thedrowsywinger/2A24A59224A56195/Poralekha/github/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-intense-fg ansi-bold">01-22-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-07-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-23-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-10-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-23-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-08-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-24-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-11-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-24-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-09-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-25-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-12-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-25-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-10-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-26-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-13-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-26-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-11-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-27-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-14-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-27-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-12-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-28-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-15-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-28-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-13-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-29-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-16-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-29-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-14-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-01-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-17-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-30-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-15-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-02-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-18-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">01-31-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-16-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-03-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-19-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-01-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-17-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-04-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-20-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-02-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-18-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-05-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-21-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-03-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-19-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-06-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">README.md</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-04-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-20-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-07-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-05-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-21-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-08-2020.csv</span>*
+<span class="ansi-green-intense-fg ansi-bold">02-06-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">02-22-2020.csv</span>*  <span class="ansi-green-intense-fg ansi-bold">03-09-2020.csv</span>*
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/media/thedrowsywinger/2A24A59224A56195/Poralekha/github/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/01-23-2020.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Province/State</th>
+      <th>Country/Region</th>
+      <th>Last Update</th>
+      <th>Confirmed</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Anhui</td>
+      <td>Mainland China</td>
+      <td>1/23/20 17:00</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Beijing</td>
+      <td>Mainland China</td>
+      <td>1/23/20 17:00</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chongqing</td>
+      <td>Mainland China</td>
+      <td>1/23/20 17:00</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fujian</td>
+      <td>Mainland China</td>
+      <td>1/23/20 17:00</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Gansu</td>
+      <td>Mainland China</td>
+      <td>1/23/20 17:00</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">province_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]:</span>
+    <span class="n">province_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">province_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>46</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">province_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">province_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">province_counts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Counter({&#39;Anhui&#39;: 1,
+         &#39;Beijing&#39;: 1,
+         &#39;Chongqing&#39;: 1,
+         &#39;Fujian&#39;: 1,
+         &#39;Gansu&#39;: 1,
+         &#39;Guangdong&#39;: 1,
+         &#39;Guangxi&#39;: 1,
+         &#39;Guizhou&#39;: 1,
+         &#39;Hainan&#39;: 1,
+         &#39;Hebei&#39;: 1,
+         &#39;Heilongjiang&#39;: 1,
+         &#39;Henan&#39;: 1,
+         &#39;Hong Kong&#39;: 1,
+         &#39;Hubei&#39;: 1,
+         &#39;Hunan&#39;: 1,
+         &#39;Inner Mongolia&#39;: 1,
+         &#39;Jiangsu&#39;: 1,
+         &#39;Jiangxi&#39;: 1,
+         &#39;Jilin&#39;: 1,
+         &#39;Liaoning&#39;: 1,
+         &#39;Macau&#39;: 1,
+         &#39;Ningxia&#39;: 1,
+         &#39;Qinghai&#39;: 1,
+         &#39;Shaanxi&#39;: 1,
+         &#39;Shandong&#39;: 1,
+         &#39;Shanghai&#39;: 1,
+         &#39;Shanxi&#39;: 1,
+         &#39;Sichuan&#39;: 1,
+         &#39;Taiwan&#39;: 1,
+         &#39;Tianjin&#39;: 1,
+         &#39;Tibet&#39;: 1,
+         &#39;Washington&#39;: 1,
+         &#39;Xinjiang&#39;: 1,
+         &#39;Yunnan&#39;: 1,
+         &#39;Zhejiang&#39;: 1,
+         nan: 11})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_of_all_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_of_all_files</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;02-07-2020.csv&#39;,
+ &#39;02-25-2020.csv&#39;,
+ &#39;.gitignore&#39;,
+ &#39;01-22-2020.csv&#39;,
+ &#39;01-23-2020.csv&#39;,
+ &#39;01-24-2020.csv&#39;,
+ &#39;01-25-2020.csv&#39;,
+ &#39;01-26-2020.csv&#39;,
+ &#39;01-27-2020.csv&#39;,
+ &#39;01-28-2020.csv&#39;,
+ &#39;01-29-2020.csv&#39;,
+ &#39;01-30-2020.csv&#39;,
+ &#39;01-31-2020.csv&#39;,
+ &#39;02-01-2020.csv&#39;,
+ &#39;02-02-2020.csv&#39;,
+ &#39;02-03-2020.csv&#39;,
+ &#39;02-04-2020.csv&#39;,
+ &#39;02-05-2020.csv&#39;,
+ &#39;02-06-2020.csv&#39;,
+ &#39;02-08-2020.csv&#39;,
+ &#39;02-09-2020.csv&#39;,
+ &#39;02-10-2020.csv&#39;,
+ &#39;02-11-2020.csv&#39;,
+ &#39;02-12-2020.csv&#39;,
+ &#39;02-13-2020.csv&#39;,
+ &#39;02-14-2020.csv&#39;,
+ &#39;02-15-2020.csv&#39;,
+ &#39;02-16-2020.csv&#39;,
+ &#39;02-17-2020.csv&#39;,
+ &#39;02-18-2020.csv&#39;,
+ &#39;02-19-2020.csv&#39;,
+ &#39;02-20-2020.csv&#39;,
+ &#39;02-21-2020.csv&#39;,
+ &#39;02-22-2020.csv&#39;,
+ &#39;02-23-2020.csv&#39;,
+ &#39;02-24-2020.csv&#39;,
+ &#39;02-26-2020.csv&#39;,
+ &#39;02-27-2020.csv&#39;,
+ &#39;02-28-2020.csv&#39;,
+ &#39;02-29-2020.csv&#39;,
+ &#39;03-01-2020.csv&#39;,
+ &#39;03-02-2020.csv&#39;,
+ &#39;03-03-2020.csv&#39;,
+ &#39;03-04-2020.csv&#39;,
+ &#39;03-05-2020.csv&#39;,
+ &#39;03-06-2020.csv&#39;,
+ &#39;03-07-2020.csv&#39;,
+ &#39;03-08-2020.csv&#39;,
+ &#39;03-09-2020.csv&#39;,
+ &#39;03-10-2020.csv&#39;,
+ &#39;03-11-2020.csv&#39;,
+ &#39;03-12-2020.csv&#39;,
+ &#39;03-13-2020.csv&#39;,
+ &#39;03-14-2020.csv&#39;,
+ &#39;03-15-2020.csv&#39;,
+ &#39;03-16-2020.csv&#39;,
+ &#39;03-17-2020.csv&#39;,
+ &#39;03-18-2020.csv&#39;,
+ &#39;03-19-2020.csv&#39;,
+ &#39;03-20-2020.csv&#39;,
+ &#39;03-21-2020.csv&#39;,
+ &#39;README.md&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">actual_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_all_files</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;csv&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+        <span class="n">actual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">main</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">province_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">country_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">confirmed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">death_count</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">date_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">actual_list</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">#     print(i)</span>
+<span class="c1">#     date_list.append(str(i[:-4]))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]:</span>
+        <span class="n">province_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]:</span>
+        <span class="n">country_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;Confirmed&#39;</span><span class="p">]:</span>
+        <span class="n">confirmed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]:</span>
+        <span class="n">death_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>100%|██████████| 60/60 [00:00&lt;00:00, 197.09it/s]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">main_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="c1">#     &#39;date&#39;: date_list,</span>
+    <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">province_list</span><span class="p">,</span>
+    <span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="n">country_list</span><span class="p">,</span>
+    <span class="s1">&#39;confirmed_case&#39;</span><span class="p">:</span> <span class="n">confirmed</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">date_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">country_list</span><span class="p">)[</span><span class="s1">&#39;Bangladesh&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>14</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_confirmed_case</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">main_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Bangladesh&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;confirmed_case&#39;</span><span class="p">])</span>
+        <span class="n">total_confirmed_case</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;confirmed_case&#39;</span><span class="p">]</span>
+<span class="c1"># print(total_confirmed_case)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.0
+3.0
+3.0
+3.0
+3.0
+3.0
+3.0
+5.0
+8.0
+10.0
+14.0
+17.0
+20.0
+25.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">death_count</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s2">&quot;NaN&quot;</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">counter</span><span class="o">+=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>7617
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/Analyzing-COVID-19-Data/2020/02/20/JHU-dataset.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Analyzing-COVID-19-Data/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Analyzing-COVID-19-Data/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Analyzing-COVID-19-Data/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>My analysis of the CORD-19 dataset</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/thedrowsywinger" title="thedrowsywinger"><svg class="svg-icon grey"><use xlink:href="/Analyzing-COVID-19-Data/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/thedrowsywinger" title="thedrowsywinger"><svg class="svg-icon grey"><use xlink:href="/Analyzing-COVID-19-Data/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
